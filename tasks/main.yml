@@ -1,0 +1,46 @@
+---
+# tasks file for ibvpn
+
+- name: Update cache
+  apt:
+    update_cache: true
+    cache_valid_time: 900
+  when: ansible_os_family == "Debian"
+
+- name: Install packages
+  apt:
+    name: "{{ item }}"
+    state: installed
+  when: ansible_os_family == "Debian"
+  with_items:
+    - openvpn
+    - squid3
+
+- name: Place crt
+  copy:
+    src: ibvpn.com.crt
+    dest: /etc/openvpn/ibvpn.com.crt
+    owner: root
+    group: root
+    mode: 0644
+
+- name: Place server configuration files
+  template:
+    dest: "/etc/openvpn/{{ item }}"
+    src: "{{ item }}.j2"
+    owner: root
+    group: root
+    mode: 0644
+  with_items:
+    - ibvpn.conf
+    - user
+  notify:
+    - restart openvpn
+
+- name: Place squid configuration file
+  template:
+    dest: "/etc/squid3/squid.conf"
+    src: "squid.conf.j2"
+    backup: yes
+  notify:
+    - restart squid

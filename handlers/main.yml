@@ -1,0 +1,12 @@
+---
+# handlers file for ibvpn
+
+- name: restart openvpn
+  service:
+    name: openvpn
+    state: restarted
+
+- name: restart squid
+  service:
+    name: squid3
+    state: restarted

@@ -1,0 +1,26 @@
+
+{% for remote in ibvpn_remotes %}
+<connection>
+remote {{ remote }} 1195 udp
+</connection>
+{% endfor %}
+remote-random
+client
+dev tun
+resolv-retry infinite
+nobind
+persist-key
+mute-replay-warnings
+ca /etc/openvpn/ibvpn.com.crt
+log-append ibvpn.log
+comp-lzo
+verb 3
+mute 20
+ns-cert-type server
+fragment 1300
+route-method exe
+route-delay 2
+auth-user-pass /etc/openvpn/user
+auth-retry nointeract
+reneg-sec 0
+script-security 3 system
