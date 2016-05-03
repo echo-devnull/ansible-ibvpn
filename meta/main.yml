@@ -14,7 +14,7 @@ galaxy_info:
     - vivid
     - wily
     - xenial
-  categories:
+  galaxy_tags:
     - networking
     - web
 dependencies: []
