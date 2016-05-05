@@ -1,9 +1,8 @@
 ---
 # defaults file for ibvpn
 
-ibvpn_remotes: ['us11.ibvpn.com', 'us15.ibvpn.com', 'us16.ibvpn.com', 'us17.ibvpn.com', 'us18.ibvpn.com']
+#ibvpn_remotes: ['us11.ibvpn.com', '38.105.23.234', 'us17.ibvpn.com', 'us18.ibvpn.com']
+ibvpn_remotes: ['us11.ibvpn.com', '38.105.23.234']
 ibvpnemail: your.email.address@gmail.com
 ibvpnpassword: verysecretpassword
 ibvpn_localnet: 0.0.0.0/0
-
-

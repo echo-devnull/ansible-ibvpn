@@ -16,14 +16,6 @@
     - openvpn
     - squid3
 
-- name: Place crt
-  copy:
-    src: ibvpn.com.crt
-    dest: /etc/openvpn/ibvpn.com.crt
-    owner: root
-    group: root
-    mode: 0644
-
 - name: Place server configuration files
   template:
     dest: "/etc/openvpn/{{ item }}"
